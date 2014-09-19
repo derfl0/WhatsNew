@@ -20,12 +20,33 @@ $(document).ready(function() {
 
         // Click on image
         $('div.whatsnew img').click(function() {
-            var current = $('div.whatsnew nav div.active').index();
-            if (current >= ($('div.whatsnew nav div').length) - 1 ) {
-                $('div.whatsnew').hide(1000);
-            } else {
-                $('div.whatsnew nav div:eq(' + (current + 1) + ')').click();
-            }
+            STUDIP.whatsnew.move(1);
         });
     });
+});
+
+STUDIP.whatsnew = {
+    move: function(move) {
+        var current = $('div.whatsnew nav div.active').index();
+        if (current >= ($('div.whatsnew nav div').length) - 1 && move > 0) {
+            STUDIP.whatsnew.close();
+        } else {
+            $('div.whatsnew nav div:eq(' + (current + move) + ')').click();
+        }
+    },
+    close: function() {
+        $.get(STUDIP.URLHelper.getURL('plugins.php/WhatsnewPlugin'));
+        $('div.whatsnew').hide(1000);
+    }
+};
+
+$(document).keydown(function(e) {
+    if (e.keyCode === 37) {
+        STUDIP.whatsnew.move(-1);
+        return false;
+    }
+    if (e.keyCode === 39) {
+        STUDIP.whatsnew.move(1);
+        return false;
+    }
 });
