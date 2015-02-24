@@ -3,5 +3,5 @@ pluginclassname=WhatsnewPlugin
 origin=intelec
 version=1.0
 studipMinVersion=3.0
-dbscheme=db/install.sql
-uninstalldbscheme=db/uninstall.sql
+dbscheme=install.sql
+uninstalldbscheme=uninstall.sql
