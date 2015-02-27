@@ -1,6 +1,6 @@
 <div class="whatsnew">
     <? foreach ($images as $image): ?>
-        <img class="big-image-handled" rc="<?= $image ?>">
+        <img src="<?= $image ?>">
     <? endforeach; ?>
     <nav>
 
